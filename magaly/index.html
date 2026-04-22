@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para mi eterna Magaly ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose: #ff0040;
+            --gold: #d4af37;
+            --gold-light: #f9f295;
+            --pink: #ff66b2;
+            --deep-wine: rgba(26, 0, 5, 0.9);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: #050001;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            background: radial-gradient(circle at center, #2d0008 0%, #050001 100%);
+        }
+
+        /* --- FONDO ANIMADO --- */
+        .bg-glow {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(-45deg, #050001, #1a0005, #2d0008, #000000);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- INTRO --- */
+        #intro {
+            position: fixed;
+            inset: 0;
+            background: black;
+            z-index: 5000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .intro-txt {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: 1.2s;
+            text-align: center;
+            padding: 0 25px;
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-txt.active { opacity: 1; transform: scale(1); }
+
+        /* --- DISEÑO DE LA CARTA ELEGANTE --- */
+        .card-wrapper {
+            position: relative;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            opacity: 0;
+            transition: 2.5s;
+        }
+
+        .card {
+            background: var(--deep-wine);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 45px 25px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            /* Borde de Oro Fino */
+            border: 1px solid var(--gold);
+            box-shadow: 
+                0 20px 50px rgba(0,0,0,0.8),
+                inset 0 0 30px rgba(212, 175, 55, 0.1);
+            animation: heartbeat 5s infinite ease-in-out;
+        }
+
+        /* Esquinas Ornamentales */
+        .card::before, .card::after, .corner-tl, .corner-br {
+            content: "✧";
+            position: absolute;
+            color: var(--gold);
+            font-size: 24px;
+            text-shadow: 0 0 10px var(--gold-light);
+        }
+        .card::before { top: 10px; left: 15px; }
+        .card::after { top: 10px; right: 15px; }
+        .corner-bl { position: absolute; bottom: 10px; left: 15px; color: var(--gold); font-size: 24px; }
+        .corner-br { bottom: 10px; right: 15px; }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+            50% { transform: scale(1.02); box-shadow: 0 25px 70px rgba(255, 0, 64, 0.2); }
+        }
+
+        .step { display: none; min-height: 300px; }
+        .step.active { display: flex; flex-direction: column; justify-content: center; }
+
+        .text-love {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #f8f8f8;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: wordAppear 0.5s forwards;
+        }
+
+        @keyframes wordAppear { to { opacity: 1; transform: translateY(0); } }
+
+        .highlight {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--gold-light);
+            display: block;
+            margin: 20px 0;
+            opacity: 0;
+            text-shadow: 0 0 15px rgba(249, 242, 149, 0.5);
+        }
+
+        .btn-next {
+            background: linear-gradient(45deg, #bf953f, #aa771c);
+            border: 1px solid var(--gold-light);
+            padding: 12px 35px;
+            color: black;
+            font-weight: 700;
+            border-radius: 4px; /* Estilo botón clásico elegante */
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            margin-top: 15px;
+            display: none;
+            align-self: center;
+            transition: 0.3s;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, #fcf6ba, #bf953f);
+        }
+
+        /* --- PARTICULAS --- */
+        .particle, .text-particle {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            z-index: 10;
+            animation: fall linear infinite;
+        }
+
+        .text-particle {
+            font-family: 'Dancing Script', cursive;
+            color: var(--gold-light);
+            white-space: nowrap;
+            font-size: 1.1rem;
+            opacity: 0.6;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg) translateX(0); }
+            100% { transform: translateY(110vh) rotate(360deg) translateX(30px); }
+        }
+
+        #garden {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 50;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .flower {
+            position: absolute;
+            bottom: -80px;
+            font-size: 40px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+            transition: 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .flower.bloom { bottom: 15px; transform: scale(1.2) rotate(360deg); }
+
+        .hint { color: var(--gold); margin-top: 30px; letter-spacing: 5px; font-size: 0.8rem; animation: pulse 2s infinite; }
+        @keyframes pulse { 50% { opacity: 0.3; } }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <!-- Intro -->
+    <div id="intro">
+        <div id="msg1" class="intro-txt">Para ti Magaly...</div>
+        <div id="msg2" class="intro-txt" style="display:none">Te amo Magaly ❤️</div>
+        <div class="hint">TOCA CON AMOR</div>
+    </div>
+
+    <div id="garden"></div>
+
+    <div class="card-wrapper" id="main-ui">
+        <div class="card">
+            <!-- Esquinas decorativas -->
+            <div class="corner-bl">✧</div>
+            <div class="corner-br">✧</div>
+            
+            <div id="step-1" class="step active">
+                <p class="text-love" data-text="Magaly… cada palabra que vas a leer nace de lo más profundo de mi alma. Eres la luz que ilumina mis días más oscuros. Quiero pedirte perdón si alguna vez te hice sentir mal. Mi único propósito es protegerte y hacerte feliz."></p>
+                <span class="highlight">Perdóname, mi niña...</span>
+                <button class="btn-next" onclick="next(2)">Continuar ✨</button>
+            </div>
+
+            <div id="step-2" class="step">
+                <p class="text-love" data-text="Me daba miedo confesar lo que sentía, porque nunca antes alguien me había importado tanto. No soy de encariñarme rápido, pero tú... Tú tienes algo que me cautivó desde el primer momento. Te volviste mi pensamiento favorito."></p>
+                <span class="highlight">Eres única en este mundo.</span>
+                <button class="btn-next" onclick="next(3)">Sigue conmigo ✨</button>
+            </div>
+
+            <div id="step-3" class="step">
+                <p class="text-love" data-text="Me enamoré de tu risa, de tu forma de ver la vida y de la increíble mujer que eres. Te amo con todo mi corazoncito, Magaly. Soy de los que luchan y no se rinden por lo que aman. Y yo te elijo a ti, hoy y siempre."></p>
+                <span class="highlight">Te amo profundamente.</span>
+                <button class="btn-next" onclick="next(4)">A pesar de todo ✨</button>
+            </div>
+
+            <div id="step-4" class="step">
+                <p class="text-love" data-text="Sé que la distancia nos separa físicamente, pero nuestro sentimiento no conoce fronteras. No hay kilómetros suficientes que puedan apagar lo que siento por ti. Haría lo imposible por cruzar cualquier camino solo para abrazarte."></p>
+                <span class="highlight">Nada nos va a separar.</span>
+                <button class="btn-next" onclick="next(5)">Mi gran pregunta ✨</button>
+            </div>
+
+            <div id="step-5" class="step">
+                <p class="text-love" data-text="Magaly, eres lo más hermoso que la vida me ha regalado. Ya no imagino un futuro donde no estés tú. Eres mi presente, mi paz y mi mayor deseo. Por eso, con el corazón en la mano, te pregunto..."></p>
+                <span class="highlight">¿Quieres ser mi novia y escribir juntos nuestra historia por siempre? ❤️</span>
+                <button class="btn-next" onclick="finish()">SÍ, ACEPTO ❤️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const intro = document.getElementById('intro');
+        const msg1 = document.getElementById('msg1');
+        const msg2 = document.getElementById('msg2');
+        const ui = document.getElementById('main-ui');
+        const garden = document.getElementById('garden');
+
+        let introStage = 0;
+
+        window.onload = () => setTimeout(() => msg1.classList.add('active'), 500);
+
+        intro.addEventListener('click', () => {
+            if(introStage === 0) {
+                msg1.classList.remove('active');
+                setTimeout(() => {
+                    msg1.style.display = 'none';
+                    msg2.style.display = 'block';
+                    setTimeout(() => msg2.classList.add('active'), 100);
+                }, 1000);
+                introStage = 1;
+            } else {
+                intro.style.opacity = '0';
+                setTimeout(() => {
+                    intro.style.display = 'none';
+                    ui.style.opacity = '1';
+                    startParticles();
+                    sprout(6);
+                    animateText(document.querySelector('.step.active .text-love'));
+                }, 1000);
+            }
+        });
+
+        function animateText(target) {
+            const text = target.getAttribute('data-text');
+            const words = text.split(' ');
+            target.innerHTML = '';
+            
+            words.forEach((word, i) => {
+                const span = document.createElement('span');
+                span.innerHTML = word + '&nbsp;';
+                span.classList.add('word');
+                span.style.animationDelay = (i * 0.1) + 's';
+                target.appendChild(span);
+            });
+
+            const highlight = target.parentElement.querySelector('.highlight');
+            const btn = target.parentElement.querySelector('.btn-next');
+            
+            setTimeout(() => {
+                highlight.style.opacity = '1';
+                highlight.style.transition = '2s';
+                setTimeout(() => {
+                    btn.style.display = 'inline-block';
+                    btn.style.opacity = '0';
+                    btn.style.animation = 'fadeIn 1s forwards';
+                }, 1000);
+            }, words.length * 100 + 500);
+        }
+
+        function next(n) {
+            document.querySelector('.step.active').classList.remove('active');
+            setTimeout(() => {
+                const nextStep = document.getElementById('step-' + n);
+                nextStep.classList.add('active');
+                sprout(5);
+                burst();
+                animateText(nextStep.querySelector('.text-love'));
+            }, 400);
+        }
+
+        function sprout(count) {
+            const icons = ['🌹', '🌻', '🌸', '🌼', '🌹', '💖'];
+            for(let i=0; i<count; i++) {
+                const f = document.createElement('div');
+                f.classList.add('flower');
+                f.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                f.style.left = Math.random() * 90 + 5 + '%';
+                garden.appendChild(f);
+                setTimeout(() => f.classList.add('bloom'), 100 + (i*150));
+            }
+        }
+
+        function createP() {
+            const isText = Math.random() > 0.88;
+            if(isText) {
+                const t = document.createElement('div');
+                t.classList.add('text-particle');
+                t.innerHTML = "Te amo Magaly ❤️";
+                t.style.left = Math.random() * 70 + 15 + 'vw';
+                t.style.animationDuration = Math.random() * 6 + 6 + 's';
+                document.body.appendChild(t);
+                setTimeout(() => t.remove(), 12000);
+            } else {
+                const p = document.createElement('div');
+                const items = ['❤️', '💖', '🌹', '🌻', '🌸', '✨'];
+                p.classList.add('particle');
+                p.innerHTML = items[Math.floor(Math.random() * items.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.fontSize = Math.random() * 15 + 15 + 'px';
+                p.style.animationDuration = Math.random() * 4 + 6 + 's';
+                p.style.opacity = Math.random() * 0.5 + 0.3;
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 10000);
+            }
+        }
+
+        function startParticles() { setInterval(createP, 350); }
+        function burst() { for(let i=0; i<30; i++) setTimeout(createP, i * 25); }
+
+        function finish() {
+            burst();
+            sprout(15);
+            alert("¡Eres mi vida, Magaly! ❤️");
+        }
+    </script>
+    <style>
+        @keyframes fadeIn { to { opacity: 1; } }
+    </style>
+</body>
+</html>
